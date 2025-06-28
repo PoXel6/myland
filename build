@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+
+kitty() {
+  if [ -e $HOME/Personal/myland/$1/kitty/theme.conf ]; then
+    rm $HOME/Personal/myland/$1/kitty/theme.conf
+  fi
+  ln -s $HOME/Personal/myland/$1/kitty/* $HOME/.config/kitty/
+}
+
+hypr() {
+  if [ -e $HOME/Personal/myland/$1/hypr/theme.conf ]; then
+    rm $HOME/Personal/myland/$1/hypr/theme.conf
+  fi
+  ln -s $HOME/Personal/myland/$1/hypr/theme.conf $HOME/.config/hypr/
+}
+
+waybar() {
+  if [ -e $HOME/Personal/myland/$1/waybar/config.jsonc ]; then
+    rm $HOME/Personal/myland/$1/waybar/config.jsonc 
+  elif [ -e $HOME/Personal/myland/$1/waybar/waybar_theme.css ]; then
+    rm $HOME/Personal/myland/$1/waybar/waybar_theme.css
+  fi
+  ln -s $HOME/Personal/myland/$1/waybar/config.jsonc $HOME/.config/waybar/
+  ln -s $HOME/Personal/myland/$1/waybar/waybar_theme.css $HOME/.config/waybar/
+}
+
+waybar "$1"
+hypr "$1"
