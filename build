@@ -20,3 +20,8 @@ waybar() {
 waybar "$1"
 hypr "$1"
 kitty "$1"
+
+killall waybar
+/usr/bin/waybar & disown &> /dev/null
+kill -SIGUSR1 $(pgrep kitty)
+hyprctl reload
