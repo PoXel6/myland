@@ -1,0 +1,16 @@
+@define-color bar-bg #282C34;
+
+@define-color main-fg #ABB2BF;
+@define-color main-bg #282C34;
+
+@define-color wk-act-fg transparent;
+@define-color wk-act-bg transparent;
+@define-color wk-inact-fg transparent;
+@define-color wk-inact-bg transparent;
+
+@define-color wb-act-bg transparent;
+@define-color wb-act-fg #ffff00;
+@define-color wb-act-fg-glow #f0e68c;
+
+@define-color wb-hvr-fg #b54c5b;
+@define-color wb-hvr-bg transparent;
