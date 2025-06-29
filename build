@@ -1,27 +1,34 @@
 #!/usr/bin/env bash
 
 kitty() {
-  rm $XDG_CONFIG_HOME/kitty/theme.conf
-  ln -s $HOME/Personal/myland/$1/kitty/* $XDG_CONFIG_HOME/kitty/
+	rm $XDG_CONFIG_HOME/kitty/theme.conf
+	ln -s $HOME/Personal/myland/$1/kitty/* $XDG_CONFIG_HOME/kitty/
 }
 
 hypr() {
-  rm $XDG_CONFIG_HOME/hypr/theme.conf
-  ln -s $HOME/Personal/myland/$1/hypr/theme.conf $XDG_CONFIG_HOME/hypr/
+	rm $XDG_CONFIG_HOME/hypr/theme.conf
+	ln -s $HOME/Personal/myland/$1/hypr/theme.conf $XDG_CONFIG_HOME/hypr/
 }
 
 waybar() {
-  rm $XDG_CONFIG_HOME/waybar/waybar_theme.css
-  rm $XDG_CONFIG_HOME/waybar/config.jsonc
-  ln -s $HOME/Personal/myland/$1/waybar/config.jsonc $XDG_CONFIG_HOME/waybar/
-  ln -s $HOME/Personal/myland/$1/waybar/waybar_theme.css $XDG_CONFIG_HOME/waybar/
+	rm $XDG_CONFIG_HOME/waybar/waybar_theme.css
+	rm $XDG_CONFIG_HOME/waybar/config.jsonc
+	ln -s $HOME/Personal/myland/$1/waybar/config.jsonc $XDG_CONFIG_HOME/waybar/
+	ln -s $HOME/Personal/myland/$1/waybar/waybar_theme.css $XDG_CONFIG_HOME/waybar/
 }
 
-waybar "$1"
-hypr "$1"
-kitty "$1"
+if [ "@#" -eq 0 ]; then
+	arg=$(echo -e "onedark\ncatppuccin" | rofi -dmenu)
+	waybar $arg
+	hypr $arg
+	kitty $arg
+else
+	waybar "$1"
+	hypr "$1"
+	kitty "$1"
+fi
 
 killall waybar
-/usr/bin/waybar & disown &> /dev/null
+/usr/bin/waybar &
 kill -SIGUSR1 $(pgrep kitty)
 hyprctl reload
