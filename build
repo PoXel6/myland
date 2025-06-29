@@ -11,9 +11,7 @@ hypr() {
 }
 
 waybar() {
-	rm $XDG_CONFIG_HOME/waybar/waybar_theme.css
-	rm $XDG_CONFIG_HOME/waybar/config.jsonc
-	ln -s $HOME/Personal/myland/$1/waybar/config.jsonc $XDG_CONFIG_HOME/waybar/
+	rm $XDG_CONFIG_HOME/waybar/theme.css
 	ln -s $HOME/Personal/myland/$1/waybar/theme.css $XDG_CONFIG_HOME/waybar/
 }
 
