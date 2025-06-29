@@ -11,7 +11,7 @@
 {
   "layer": "top",
   "position": "top",
-  "mod": "dock",
+  "mode": "dock",
   "height": 32,
   "exclusive": true,
   "passthrough": false,
