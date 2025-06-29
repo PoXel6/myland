@@ -14,7 +14,12 @@ waybar() {
 	rm $XDG_CONFIG_HOME/waybar/waybar_theme.css
 	rm $XDG_CONFIG_HOME/waybar/config.jsonc
 	ln -s $HOME/Personal/myland/$1/waybar/config.jsonc $XDG_CONFIG_HOME/waybar/
-	ln -s $HOME/Personal/myland/$1/waybar/waybar_theme.css $XDG_CONFIG_HOME/waybar/
+	ln -s $HOME/Personal/myland/$1/waybar/theme.css $XDG_CONFIG_HOME/waybar/
+}
+
+btop() {
+	rm $XDG_CONFIG_HOME/btop/themes/*
+	ln -s $HOME/Personal/myland/$1/btop/*.theme $XDG_CONFIG_HOME/btop/themes/
 }
 
 if [ "@#" -eq 0 ]; then
@@ -22,10 +27,12 @@ if [ "@#" -eq 0 ]; then
 	waybar $arg
 	hypr $arg
 	kitty $arg
+	btop $arg
 else
 	waybar "$1"
 	hypr "$1"
 	kitty "$1"
+	btop "$1"
 fi
 
 killall waybar
