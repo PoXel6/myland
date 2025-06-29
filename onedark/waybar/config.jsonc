@@ -35,7 +35,6 @@
   "modules-right": [
     "tray",
     "wireplumber",
-    "custom/update",
     "custom/notification",
     "custom/power",
     "custom/powermenu",
