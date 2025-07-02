@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+ghostty() {
+	rm $XDG_CONFIG_HOME/ghostty/themes/theme
+	ln -s $HOME/Personal/myland/$1/ghostty/* $XDG_CONFIG_HOME/ghostty/themes
+}
+
 kitty() {
 	rm $XDG_CONFIG_HOME/kitty/theme.conf
 	ln -s $HOME/Personal/myland/$1/kitty/* $XDG_CONFIG_HOME/kitty/
@@ -20,18 +25,11 @@ btop() {
 	ln -s $HOME/Personal/myland/$1/btop/*.theme $XDG_CONFIG_HOME/btop/themes/
 }
 
-if [ "@#" -eq 0 ]; then
-	arg=$(echo -e "onedark\ncatppuccin" | rofi -dmenu)
-	waybar $arg
-	hypr $arg
-	kitty $arg
-	btop $arg
-else
-	waybar "$1"
-	hypr "$1"
-	kitty "$1"
-	btop "$1"
-fi
+waybar "$1"
+hypr "$1"
+kitty "$1"
+btop "$1"
+ghostty "$1"
 
 killall waybar
 /usr/bin/waybar &
